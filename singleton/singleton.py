@@ -4,19 +4,19 @@
 
 
 class Singleton:
+    """Advantages: inheritable
+       Drawbacks: throws exceptions"""
     ref = None
 
     def __init__(self):
         if Singleton.ref: raise(Exception)
         Singleton.ref = self
 
-"""
-    Advantages: inheritable
-    Drawbacks: throws exceptions
-"""
 
 
 def singleton(cls):
+    """Advantages: easy to use, no exceptions
+       Drawbacks: outside references"""
 
     instances = {}
     def get_instance():
@@ -29,13 +29,11 @@ def singleton(cls):
 class Class():
    pass
 
-"""
-    Advantages: easy to use, no exceptions
-    Drawbacks: outside references
-"""
 
 
 class Singleton:
+    """Advantages: inheritable, no exceptions
+       Drawbacks: have to call get_instance"""
     ref = None
 
     @classmethod
@@ -43,7 +41,3 @@ class Singleton:
         if not cls.ref: cls.ref = cls()
         return cls.ref
 
-"""
-    Advantages: inheritable, no exceptions
-    Drawbacks: have to call get_instance
-"""
