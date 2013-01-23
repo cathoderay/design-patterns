@@ -13,12 +13,11 @@ class Singleton:
         Singleton.ref = self
 
 
-
 def singleton(cls):
     """Advantages: easy to use, no exceptions
        Drawbacks: outside references"""
-
     instances = {}
+
     def get_instance():
         if not cls in instances:
             instances[cls] = cls()
@@ -28,7 +27,6 @@ def singleton(cls):
 @singleton
 class Class():
    pass
-
 
 
 class Singleton:
