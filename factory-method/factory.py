@@ -22,7 +22,7 @@ class EggProduct(Product):
     __vendor = "Eggs Corporation"
 
     def tell_vendor(self):
-        print EggProduct.__vendor 
+        return EggProduct.__vendor 
     
     def toggle(self):
         super(EggProduct, self).toggle()
@@ -43,7 +43,7 @@ class SpamProduct(Product):
     __vendor = "Spams Corporation"
 
     def tell_vendor(self):
-        print SpamProduct.__vendor
+        return SpamProduct.__vendor
 
     def toggle(self):
        super(SpamProduct, self).toggle()
@@ -72,9 +72,9 @@ class ProductsStore:
         product.toggle()
         after = product.state
         if after != before:
-            print "product is ok! =)"
+            print "A product from %s is ok" % (product.tell_vendor())
         else:
-            print "product is not ok, =("
+            print "A product from %s is not ok" % (product.tell_vendor())
 
 
 class EggStore(ProductsStore):
