@@ -19,8 +19,8 @@ class Subject:
 
 class ConcreteSubject(Subject):
     def __init__(self):
-         self.observers = []
-         self.state = 42
+        self.observers = []
+        self.state = 42
 
     def register(self, observer):
         if not observer in self.observers:
@@ -34,8 +34,8 @@ class ConcreteSubject(Subject):
             observer.update(self, self.state)
 
     def change_state(self, value):
-       self.state = value
-       self.notify()
+        self.state = value
+        self.notify()
 
 
 class Observer:
@@ -57,4 +57,5 @@ if __name__ == '__main__':
     subject.register(observer)
 
     subject.change_state(300)
+
     # a message, then, should be printed by observer

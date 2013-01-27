@@ -1,6 +1,3 @@
-# File: singleton.py
-# Description: Singleton implementations
-
 
 
 class Singleton:
