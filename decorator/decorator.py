@@ -22,7 +22,7 @@ class Decorator(Component):
 
     @abstractmethod
     def do(self):
-        return 1
+        pass
 
 
 class ConcreteDecorator(Decorator):
