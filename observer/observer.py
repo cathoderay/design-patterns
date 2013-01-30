@@ -5,11 +5,11 @@ class Subject:
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def register(self, observer):
+    def attach(self, observer):
         pass
 
     @abstractmethod
-    def unregister(self, observer):
+    def detach(self, observer):
         pass
 
     @abstractmethod
@@ -19,18 +19,21 @@ class Subject:
 
 class ConcreteSubject(Subject):
     def __init__(self):
-        self.observers = []
+        self._observers = []
         self.state = 42
 
-    def register(self, observer):
-        if not observer in self.observers:
-            self.observers.append(observer)
+    def attach(self, observer):
+        if not observer in self._observers:
+            self._observers.append(observer)
 
-    def unregister(self, observer):
-        self.observers.remove(observer)
+    def detach(self, observer):
+        try:
+            self._observers.remove(observer)
+        except ValueError:
+            pass
 
     def notify(self):
-        for observer in self.observers:
+        for observer in self._observers:
             observer.update(self, self.state)
 
     def change_state(self, value):
@@ -54,7 +57,7 @@ class ConcreteObserver(Observer):
 if __name__ == '__main__':
     subject = ConcreteSubject()
     observer = ConcreteObserver()
-    subject.register(observer)
+    subject.attach(observer)
 
     subject.change_state(300)
 
